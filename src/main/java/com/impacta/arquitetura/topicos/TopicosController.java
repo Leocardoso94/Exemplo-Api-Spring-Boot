@@ -3,12 +3,13 @@ package com.impacta.arquitetura.topicos;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+@CrossOrigin(maxAge = 3600)
 @RestController
 public class TopicosController {
 	@Autowired
@@ -33,9 +34,9 @@ public class TopicosController {
 	public void atualizarTopico(@RequestBody Topico topico, @PathVariable String id) {
 		topicoService.atualizarTopico(id, topico);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.DELETE, value = "/topicos/{id}")
-	public void deleteTopico( @PathVariable String id) {
+	public void deleteTopico(@PathVariable String id) {
 		topicoService.deleteTopico(id);
 	}
 }
